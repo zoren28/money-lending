@@ -19,6 +19,7 @@
                         <th>Lastname</th>
                         <th>Suffix</th>
                         <th>Status</th>
+                        <th>Account</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -29,10 +30,30 @@
                         <th>Lastname</th>
                         <th>Suffix</th>
                         <th>Status</th>
+                        <th>Account</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
             </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view-customer-account">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">View Account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="view-customer-account">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn bg-gray-200" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
@@ -81,17 +102,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="view-customer">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="customer-transaction">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">View Customer</h4>
+                <h4 class="modal-title">Edit Customer</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <div class="view-customer">
+                <div class="customer-transaction">
 
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn bg-gray-200" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

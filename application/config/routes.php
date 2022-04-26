@@ -12,6 +12,7 @@ $route['add_user'] = 'customer/add_user';
 $route['users'] = 'customer/store';
 $route['customer_list'] = 'customer';
 $route['show/(:any)'] = 'customer/show/$1';
+$route['update_customer'] = 'customer/update_customer';
 
 $route['page/menu/(:any)/(:any)'] = 'page/menu/$1/$2';
 $route['default_controller'] = 'page/menu';

@@ -67,7 +67,44 @@ class Customer_model extends CI_Model
 
     public function customer_banks($id)
     {
-        $query = $this->db->get_where('customer_banks', array('user_id' => $id));
+        $query = $this->db->select('customer_banks.id, bank_id, bank, account_no')
+            ->from('customer_banks')
+            ->join('banks', 'banks.id = customer_banks.bank_id')
+            ->where(array('user_id' => $id))
+            ->get();
         return $query->result();
+    }
+
+    public function update_customer($data)
+    {
+        $update = array(
+            'firstname' => ucwords(strtolower($data['firstname'])),
+            'lastname' => ucwords(strtolower($data['lastname'])),
+            'middlename' => ucwords(strtolower($data['middlename'])),
+            'suffix' => $data['suffix'],
+            'email' => $data['email'],
+            'email_verified_at' => $this->date,
+            'updated_at' => $this->date,
+        );
+
+        $this->db->where('id', $data['customer_id']);
+        $this->db->update('users', $update);
+    }
+
+    public function update_customer_bank($data)
+    {
+        $this->db->delete('customer_banks', array('user_id' => $data['customer_id']));
+        for ($i = 0; $i < count($data['chk_bank']); $i++) {
+
+            $insert = array(
+                'user_id' => $data['customer_id'],
+                'bank_id' => $data['chk_bank'][$i],
+                'account_no' => $data['account_no'][$i],
+                'created_at' => $this->date,
+                'updated_at' => $this->date
+            );
+
+            $this->db->insert('customer_banks', $insert);
+        }
     }
 }

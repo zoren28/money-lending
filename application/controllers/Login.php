@@ -31,11 +31,14 @@ class Login extends CI_Controller
                 $this->session->set_userdata($data);
                 if (isset($_SESSION['user_id'])) {
 
-                    echo json_encode(array('status' => 200, 'message' => 'Successfully login'));
+                    echo json_encode(array('status' => 200, 'message' => 'Successfully Login'));
                 } else {
 
                     echo json_encode(array('status' => 404, 'message' => 'Opps! Something went wrong'));
                 }
+            } else {
+
+                echo json_encode(array('status' => 404, 'message' => 'Incorrect Password!'));
             }
         } else {
 

@@ -78,6 +78,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
+    <script src="<?= base_url('assets/vendor/sweetalert2/sweetalert2.all.min.js') ?>"></script>
     <script>
         $(document).ready(function() {
 
@@ -95,10 +96,27 @@
                         data = JSON.parse(data);
                         if (data.status === 200) {
 
-                            location.reload();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then((result) => {
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                    location.reload();
+                                }
+                            });
+
                         } else {
 
-                            console.log('error');
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'warning',
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
                         }
                     }
                 });
